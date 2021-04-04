@@ -1,0 +1,19 @@
+{
+  "name": "chips-and-tables",
+  "version": "1.0.0",
+  "description": "A live poker app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattdeann/chips-and-tables.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattdeann/chips-and-tables/issues"
+  },
+  "homepage": "https://github.com/mattdeann/chips-and-tables#readme"
+}
