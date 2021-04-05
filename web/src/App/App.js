@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
+import firebase from 'firebase'
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,7 +21,6 @@ import Game from '../Components/Game/Game'
 
 
 function App() {
-
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [currentMessage, setCurrentMessage] = useState('')
   const [user, setUser] = useState({})
@@ -36,6 +36,17 @@ function App() {
 
 
   }
+
+  useEffect(() => {
+    if (firebase.auth().currentUser) {
+      getUserByEmail(firebase.auth().currentUser.email)
+        .then(response => {
+          console.log(response)
+          setUser(response)
+        })
+    }
+    
+  }, [user])
 
   const startNewGame = (playerEmails) => {
     // DO POST HERE?

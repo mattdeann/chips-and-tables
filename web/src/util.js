@@ -13,14 +13,10 @@ export const getUserByEmail = email => {
     headers: {
       "Content-Type": "application/json"
     },
-    body: {
-      "email": JSON.stringify(email)
-    },
     redirect: 'follow'
   };
 
-  return fetch("http://localhost:8000/api/v1/user", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
+  return fetch(`http://localhost:8000/api/v1/user/${email}`, requestOptions)
+  .then(response => response.json())
   .catch(error => console.log('error', error));
 }
