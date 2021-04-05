@@ -12,19 +12,13 @@ import Header from '../Components/Header/Header'
 import GamesNav from '../Components/GamesNav/GamesNav'
 import Dashboard from '../Components/Dashboard/Dashboard'
 import NewGame from '../Components/NewGame/NewGame'
+import Game from '../Components/Game/Game'
 
 
-const api = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
-const socket = require("socket.io-client")(api, {
-  withCredentials: false // WARN: please do not do this in production
-});
 
 
 function App() {
-  socket.on('connection', () => {
-    console.log("connected to socket!");
-  })
 
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [currentMessage, setCurrentMessage] = useState('')
@@ -75,6 +69,9 @@ function App() {
         <Switch>
           <Route exact path="/newgame">
             <NewGame user={user} startNewGame={startNewGame} />
+          </Route>
+          <Route exact path="/gameroom/:id">
+            <Game />
           </Route>
           <Route exact path="/dashboard">
             <Dashboard user={user} games={games} />
