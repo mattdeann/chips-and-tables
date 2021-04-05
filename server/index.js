@@ -35,14 +35,17 @@ io.on('connection', (socket) => {
 });
 
 app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 // Database Interactions
 
-app.get(`/api/v1/users/:id`, async (req, res) => {
+app.get(`/api/v1/user`, async (req, res) => {
+  console.log(req.body)
   try {
-    const user = await database('users').where({email: req.params.email}).first().then(row => row);
+    const users = await database('users').where({email: req.body.email})
 
-    res.status(200).json(user);
+    res.status(200).json(users);
   } catch(error) {
     res.status(500).json({ error });
   }
@@ -53,7 +56,7 @@ app.get(`/api/v1/users/:id`, async (req, res) => {
 // USES GAMEID SET WITH UUID ON FRONT END
 app.get('/api/v1/games/messages/:id', async (req, res) => {
   try {
-    const game = await database('games').where({gameId: req.params.id})
+    const game = await database('games').where({gameId: req.body.gameId})
 
     const messages = game.messages
 
@@ -63,13 +66,12 @@ app.get('/api/v1/games/messages/:id', async (req, res) => {
   }
 })
 
-app.post('/messages', async (req, res) => {
+app.post('/api/v1/games/messages', async (req, res) => {
   try {
-    const message = await knex('messages').insert({
-      message: req.body.message,
-      user_name: req.body.user_name
-    }, 'message')
-    res.status(201).json( { message } )
+    const game = await database('games').where({gameId: req.body.gameId}).update({messages: req.body.messages}, 'newMessage')
+
+    
+    res.status(201).json( { game } )
   } catch (error) {
     res.status(500).json( { error } )
   }
