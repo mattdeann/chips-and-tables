@@ -11,8 +11,7 @@ export default function Dashboard({user}) {
 
   return (
     <main className="dashboard">
-      <Header />
-      
+      <UserInfo />
     </main>
   )
 }

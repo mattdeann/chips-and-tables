@@ -7,6 +7,7 @@ import {
   Redirect,
 } from "react-router-dom"
 import { v4 as uuidv4 } from 'uuid'
+import { getUserByEmail } from '../util'
 import Login from '../Components/Login/Login'
 import Header from '../Components/Header/Header'
 import GamesNav from '../Components/GamesNav/GamesNav'
@@ -25,7 +26,6 @@ function App() {
   const [user, setUser] = useState({})
   const [games, setGames] = useState([{gameId: uuidv4(), players: ["matthewallandean@gmail.com", "skingston@gmail.com"], gameHistory: {}}])
   const [activeGame, setActiveGame] = useState({})
-
 
   const handleChange = e => {
     setCurrentMessage(e.target.value);
@@ -73,7 +73,7 @@ function App() {
           <Route exact path="/gameroom/:id">
             <Game />
           </Route>
-          <Route exact path="/dashboard">
+          <Route exact path="/">
             <Dashboard user={user} games={games} />
           </Route>
         </Switch>
