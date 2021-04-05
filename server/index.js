@@ -40,12 +40,11 @@ app.use(express.urlencoded({ extended: false }))
 
 // Database Interactions
 
-app.get(`/api/v1/user`, async (req, res) => {
-  console.log(req.body)
+app.get(`/api/v1/user/:email`, async (req, res) => {
   try {
-    const users = await database('users').where({email: req.body.email})
+    const user = await database('users').where({email: req.params.email})
 
-    res.status(200).json(users);
+    res.status(200).json(user);
   } catch(error) {
     res.status(500).json({ error });
   }
