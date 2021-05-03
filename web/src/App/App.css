@@ -1,0 +1,41 @@
+.app {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 2fr 10fr;
+  grid-template-rows: 2fr 10fr;
+  text-align: center;
+}
+
+
+.my-info {
+  border: 1px solid maroon;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.image {
+  height: 20vh;
+}
+
+.friends {
+  border: 1px solid forestgreen;
+}
+
+.friends-list {
+  display: flex;
+  flex-wrap: auto;
+}
+
+.contact {
+  font-size: x-small;
+  border: 1px solid black;
+  width: 4rem;
+  overflow: hidden;
+}
+
+.add-friend {
+  border: 1px solid aqua;
+}
