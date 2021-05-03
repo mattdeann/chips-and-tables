@@ -46,7 +46,7 @@ function App() {
         })
     }
     
-  }, [user])
+  }, [])
 
   const startNewGame = (playerEmails) => {
     // DO POST HERE?

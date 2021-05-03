@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
 // Socket events
 io.on('connection', (socket) => {
   console.log('new client connected');
-  socket.emit('connection', null);
+  socket.emit('connection', 'connected to server');
 });
 
 app.use(cors())

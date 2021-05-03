@@ -7,8 +7,8 @@ const socket = require("socket.io-client")(api, {
 });
 
 export default function Game() {
-  socket.on('connection', () => {
-    console.log("connected to socket!");
+  socket.on('connection', (message) => {
+    console.log(message);
   })
 
   const [chatInput, setChatInput] = useState('');
